@@ -1,0 +1,12 @@
+input {
+    color:burlywood;
+    margin: 10px;
+}
+button {
+    margin: 10px;
+    color:burlywood;
+}
+
+.uploadButton {
+    color:burlywood;
+}

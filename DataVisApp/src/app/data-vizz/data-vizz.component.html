@@ -1,0 +1,13 @@
+<button class="btn bg-dark">
+	<input type="file" class ="bg-dark"  (change)="onFileSelect($event)"/>
+</button>
+
+<ng-container *ngIf="enableSubmitButton">
+    <button  (click)="onSubmit()" class="btn btn-default bg-dark uploadButton" >
+        Generate Chart</button>
+</ng-container>
+
+
+<ng-container *ngIf="loadChart">
+    <app-generate-chart></app-generate-chart>
+</ng-container>
