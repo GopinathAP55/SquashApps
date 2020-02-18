@@ -15,10 +15,10 @@ export class GenerateChartComponent implements OnInit {
     this.BarChart = new Chart('barChart', {
       type: 'bar',
     data: {
-     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+     labels:  this.chartData.getDataForGraph1(),
      datasets: [{
          label: '# of Votes',
-         data: [9,7 , 3, 5, 2, 10],
+         data: this.chartData.getDataForGraph2(),
          backgroundColor:'burlywood',
          borderColor:'black',
          borderWidth: 2
@@ -39,7 +39,7 @@ export class GenerateChartComponent implements OnInit {
          xAxes:[{
           scaleLabel: {
             display: true,
-            labelString: this.chartData.getAxis()
+            labelString: this.chartData.getXAxis()
           }
          }]
      }

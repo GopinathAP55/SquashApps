@@ -12,7 +12,7 @@ export class DataVizzComponent implements OnInit {
 
   arrayBuffer : ArrayBuffer;
   constructor(private chartData : ChartDataService) { }
-  self = this;
+  
   ngOnInit() {
 
   }
@@ -20,6 +20,7 @@ export class DataVizzComponent implements OnInit {
   xAxiz:any;
   yAxis:any;
   onFileSelect($event){
+   var self = this;
     var fileName = $event.target.files[0].name;
 
     if(fileName.split(".")[1]!=="csv"){
@@ -42,13 +43,38 @@ export class DataVizzComponent implements OnInit {
        for(let i = 1 ; i< csvArray.length ;i++)
        {
         csvDataArray.push(csvArray[i]);
-       }  
+       }
+
+       console.log(csvDataArray);
+
+       var data1 = csvDataArray.forEach(element => {
+        var sp = element.split(',');
+        return sp[0];
+       });
+
+       var dataForGraph1 =[];
+       var dataForGraph2 =[];
+
+
+       for(let i = 1 ; i< csvDataArray.length ;i++)
+       {
+        var data = csvDataArray[i].split(',');
+        dataForGraph1.push(data[0]);
+        dataForGraph2.push(data[1]);
+
+       }
+        
+       self.chartData.setDataForGraph1(dataForGraph1);
+       self.chartData.setDataForGraph2(dataForGraph2);
+
+       self.chartData.setXaxis(headerArray[0]);
+       self.chartData.setYaxis(headerArray[1]);
+
+
       }
       var dataArray = reader.readAsText($event.target.files[0]);
       console.log(dataArray);
-      this.chartData.setXaxis(dataArray[0]);
-      this.chartData.setXaxis(dataArray[1]);
-
+     
     }
     
   
